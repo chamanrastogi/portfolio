@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chaman Rastogi — Senior PHP & Laravel Developer building reliable APIs, enterprise dashboards, and high-performance web applications.">
+  <meta name="theme-color" content="#0b1020">
+  <title>Chaman Rastogi — Senior PHP & Laravel Developer</title>
+
+  <!-- Bootstrap 5.3 + Bootstrap Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #11182b;
+      --panel-2: #151e33;
+      --text: #f4f7ff;
+      --muted: #a0abc2;
+      --line: rgba(177, 194, 226, .14);
+      --accent: #a3ff6f;
+      --accent-2: #76d7ff;
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: "Manrope", sans-serif; line-height: 1.7; overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::selection { color: #0b1020; background: var(--accent); }
+    .mono { font-family: "DM Mono", monospace; letter-spacing: .03em; }
+    .text-muted-custom { color: var(--muted) !important; }
+    .accent { color: var(--accent); }
+    .section-space { padding: 112px 0; }
+    .section-kicker {
+      color: var(--accent); text-transform: uppercase; font-size: .76rem;
+      letter-spacing: .18em; font-weight: 800; display: inline-flex; gap: 10px; align-items: center;
+    }
+    .section-kicker::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
+    .section-title { font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.055em; line-height: 1.13; font-weight: 800; }
+    .navbar {
+      background: rgba(11,16,32,.82); backdrop-filter: blur(18px);
+      border-bottom: 1px solid transparent; transition: .25s ease;
+    }
+    .navbar.scrolled { border-bottom-color: var(--line); }
+    .navbar-brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.25rem; }
+    .brand-mark {
+      width: 34px; height: 34px; display: inline-grid; place-items: center; margin-right: 9px;
+      background: var(--accent); color: var(--bg); border-radius: 10px; font-size: .85rem; font-weight: 900;
+    }
+    .nav-link { color: #c0c9da !important; font-size: .88rem; font-weight: 600; padding: .65rem .85rem !important; }
+    .nav-link:hover, .nav-link.active { color: var(--accent) !important; }
+    .btn-accent {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      background: var(--accent); color: #0b1020; border: 1px solid var(--accent);
+      border-radius: 12px; padding: 13px 19px; font-weight: 800; font-size: .9rem;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .btn-accent:hover { color: #0b1020; transform: translateY(-3px); box-shadow: 0 12px 32px rgba(163,255,111,.16); }
+    .btn-outline-custom {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border: 1px solid var(--line); color: var(--text); border-radius: 12px;
+      padding: 13px 19px; font-weight: 700; font-size: .9rem; transition: .2s;
+    }
+    .btn-outline-custom:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; position: relative; padding: 140px 0 90px;
+      background-image: radial-gradient(ellipse at 78% 28%, rgba(118,215,255,.09), transparent 30%),
+                        radial-gradient(ellipse at 18% 75%, rgba(163,255,111,.07), transparent 30%);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .24;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 54px 54px; mask-image: linear-gradient(to bottom, black, transparent 88%);
+    }
+    .hero .container { position: relative; z-index: 1; }
+    .availability {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px;
+      border: 1px solid var(--line); border-radius: 999px; color: #c9d4e7; font-size: .78rem;
+      background: rgba(255,255,255,.025);
+    }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(163,255,111,.1); }
+    .hero h1 { font-size: clamp(3rem, 7vw, 6.4rem); line-height: .99; letter-spacing: -.075em; font-weight: 800; margin: 28px 0; }
+    .hero h1 .outline { color: transparent; -webkit-text-stroke: 1.5px #c9d4e7; }
+    .hero-copy { max-width: 610px; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.14rem); }
+    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; color: #c3cee2; font-size: .82rem; margin-top: 32px; }
+    .hero-meta span { display: inline-flex; gap: 8px; align-items: center; }
+    .hero-meta i { color: var(--accent); }
+    .code-card {
+      background: rgba(17,24,43,.88); border: 1px solid rgba(177,194,226,.2);
+      border-radius: 20px; box-shadow: 0 30px 90px rgba(0,0,0,.28); overflow: hidden;
+      transform: rotate(1.5deg); max-width: 470px; margin-left: auto; position: relative;
+    }
+    .code-top { padding: 15px 18px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; color: #9daac3; font-size: .75rem; }
+    .window-dots { display: flex; gap: 6px; }
+    .window-dots span { width: 8px; height: 8px; border-radius: 50%; background: #44506a; }
+    .window-dots span:first-child { background: #ff817b; } .window-dots span:nth-child(2) { background: #ffd166; } .window-dots span:nth-child(3) { background: #a3ff6f; }
+    .code-body { padding: 26px 24px 30px; font: .84rem/2 "DM Mono", monospace; color: #b9c5dc; }
+    .code-line { display: block; white-space: nowrap; }
+    .code-no { color: #52617e; display: inline-block; width: 28px; user-select: none; }
+    .code-pink { color: #ff9ccf; } .code-green { color: var(--accent); } .code-blue { color: var(--accent-2); } .code-yellow { color: #ffd98e; }
+    .code-indent { padding-left: 28px; }
+    .float-chip {
+      position: absolute; z-index: 2; padding: 12px 15px; background: #19243a; border: 1px solid var(--line);
+      border-radius: 14px; box-shadow: 0 15px 35px rgba(0,0,0,.25); font-size: .76rem; color: #dce5f5;
+    }
+    .float-chip i { color: var(--accent); margin-right: 7px; }
+    .chip-one { top: 18%; left: -22px; } .chip-two { bottom: 13%; right: -25px; }
+    .scroll-note { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); color: #7e8ba5; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; }
+    .stats-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.015); }
+    .stat { padding: 28px 16px; text-align: center; }
+    .stat + .stat { border-left: 1px solid var(--line); }
+    .stat strong { font-size: clamp(1.7rem, 3vw, 2.5rem); letter-spacing: -.06em; font-weight: 800; display: block; }
+    .stat span { color: var(--muted); font-size: .78rem; }
+    .about-panel, .skill-card, .project-card, .timeline-card, .contact-panel {
+      background: linear-gradient(145deg, rgba(21,30,51,.86), rgba(17,24,43,.86));
+      border: 1px solid var(--line); border-radius: var(--radius);
+    }
+    .about-panel { padding: 34px; height: 100%; }
+    .about-symbol {
+      width: 64px; height: 64px; display: grid; place-items: center; border-radius: 18px;
+      color: var(--accent); font-size: 1.6rem; background: rgba(163,255,111,.09); border: 1px solid rgba(163,255,111,.18);
+    }
+    .principle { display: flex; gap: 13px; align-items: flex-start; margin-top: 20px; }
+    .principle i { color: var(--accent); font-size: 1.05rem; margin-top: 4px; }
+    .principle strong { display: block; font-size: .92rem; }
+    .principle small { color: var(--muted); font-size: .82rem; }
+    .skill-card { padding: 26px; height: 100%; transition: transform .25s, border-color .25s; }
+    .skill-card:hover, .project-card:hover { transform: translateY(-6px); border-color: rgba(163,255,111,.4); }
+    .skill-icon { font-size: 1.45rem; color: var(--accent); margin-bottom: 18px; display: block; }
+    .skill-card h3 { font-size: 1.05rem; font-weight: 800; }
+    .skill-card p { color: var(--muted); font-size: .83rem; margin-bottom: 16px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { padding: 5px 9px; border-radius: 7px; font: .68rem "DM Mono", monospace; color: #c6d1e6; background: rgba(255,255,255,.045); border: 1px solid var(--line); }
+    .project-card { overflow: hidden; height: 100%; transition: transform .25s, border-color .25s; }
+    .project-visual { min-height: 210px; padding: 26px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: #17243a; }
+    .project-visual::before { content: ""; position: absolute; width: 230px; height: 230px; border: 1px solid rgba(163,255,111,.18); border-radius: 50%; }
+    .project-visual::after { content: ""; position: absolute; width: 165px; height: 165px; border: 1px solid rgba(118,215,255,.2); border-radius: 50%; }
+    .mock-window { width: 88%; z-index: 1; padding: 14px; border: 1px solid rgba(255,255,255,.17); border-radius: 10px; background: rgba(8,13,27,.8); transform: rotate(-2deg); }
+    .mock-head { display: flex; justify-content: space-between; font-size: .55rem; color: #a8b5cb; border-bottom: 1px solid var(--line); padding-bottom: 9px; }
+    .mock-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; margin: 12px 0; }
+    .mock-kpi { padding: 9px 7px; background: #18253b; border-radius: 5px; }
+    .mock-kpi b { display: block; color: var(--accent); font-size: .8rem; }
+    .mock-kpi small { color: #8695b0; font-size: .48rem; }
+    .mock-chart { height: 46px; display: flex; align-items: end; gap: 5px; padding: 0 5px; }
+    .mock-chart span { flex: 1; background: linear-gradient(to top, rgba(118,215,255,.25), var(--accent-2)); border-radius: 3px 3px 0 0; }
+    .mock-chart span:nth-child(1) { height: 30%; } .mock-chart span:nth-child(2) { height: 55%; } .mock-chart span:nth-child(3) { height: 42%; } .mock-chart span:nth-child(4) { height: 75%; } .mock-chart span:nth-child(5) { height: 61%; } .mock-chart span:nth-child(6) { height: 95%; } .mock-chart span:nth-child(7) { height: 78%; }
+    .visual-api { background: linear-gradient(140deg,#17253c,#172c31); }
+    .api-sheet { z-index: 1; width: 80%; background: #0c1424; border: 1px solid var(--line); border-radius: 12px; padding: 19px; transform: rotate(2deg); }
+    .api-pill { display: inline-block; background: rgba(163,255,111,.12); color: var(--accent); border-radius: 5px; padding: 3px 7px; font: .63rem "DM Mono",monospace; }
+    .api-row { height: 7px; border-radius: 4px; margin-top: 12px; background: #28364e; } .api-row.short { width: 57%; } .api-row.mid { width: 78%; }
+    .visual-data { background: linear-gradient(140deg,#211e3b,#172c3a); }
+    .data-orbit { z-index: 1; width: 125px; height: 125px; border-radius: 50%; border: 1px solid rgba(118,215,255,.6); display: grid; place-items: center; box-shadow: 0 0 50px rgba(118,215,255,.08), inset 0 0 40px rgba(118,215,255,.06); }
+    .data-orbit i { color: var(--accent-2); font-size: 3rem; }
+    .project-content { padding: 26px; }
+    .project-topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 13px; }
+    .project-type { color: var(--accent); text-transform: uppercase; letter-spacing: .13em; font-size: .65rem; font-weight: 800; }
+    .project-content h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -.03em; }
+    .project-content p { color: var(--muted); font-size: .85rem; }
+    .project-link { color: var(--accent); font-size: .82rem; font-weight: 800; }
+    .timeline { position: relative; padding-left: 29px; }
+    .timeline::before { content: ""; position: absolute; top: 7px; bottom: 8px; left: 7px; width: 1px; background: var(--line); }
+    .timeline-item { position: relative; padding-bottom: 26px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; top: 7px; left: -27px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px rgba(163,255,111,.1); }
+    .timeline-card { padding: 23px 25px; }
+    .timeline-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; flex-wrap: wrap; }
+    .timeline-head h3 { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+    .timeline-head p { color: var(--muted); font-size: .82rem; margin: 0; }
+    .date-chip { color: var(--accent); background: rgba(163,255,111,.08); border: 1px solid rgba(163,255,111,.17); border-radius: 8px; padding: 5px 9px; font: .68rem "DM Mono",monospace; white-space: nowrap; }
+    .timeline-card ul { margin: 17px 0 0; padding-left: 18px; color: var(--muted); font-size: .82rem; }
+    .timeline-card li { margin: 7px 0; }
+    .contact-panel { padding: clamp(28px,5vw,58px); position: relative; overflow: hidden; }
+    .contact-panel::after { content: "</>"; position: absolute; right: -8px; bottom: -55px; color: rgba(163,255,111,.045); font: 800 14rem "DM Mono",monospace; pointer-events: none; }
+    .contact-email { font-size: clamp(1.1rem,3vw,1.75rem); font-weight: 800; letter-spacing: -.04em; overflow-wrap: anywhere; }
+    .contact-line { display: flex; gap: 13px; align-items: center; color: #c4cee1; margin: 18px 0; font-size: .9rem; }
+    .contact-line i { color: var(--accent); font-size: 1.1rem; }
+    .social-link { display: inline-grid; place-items: center; width: 43px; height: 43px; border: 1px solid var(--line); border-radius: 12px; color: #d4deef; transition: .2s; }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+    footer { border-top: 1px solid var(--line); padding: 25px 0; color: #8290aa; font-size: .75rem; }
+    .back-top { position: fixed; right: 22px; bottom: 22px; width: 43px; height: 43px; border-radius: 13px; display: grid; place-items: center; background: var(--accent); color: var(--bg); z-index: 10; opacity: 0; pointer-events: none; transition: .2s; }
+    .back-top.show { opacity: 1; pointer-events: auto; }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 991.98px) {
+      .navbar-collapse { background: #11182b; border: 1px solid var(--line); border-radius: 15px; padding: 12px; margin-top: 10px; }
+      .hero { min-height: auto; padding-top: 130px; }
+      .hero-code-wrap { margin: 65px auto 0; max-width: 500px; }
+      .code-card { margin: auto; }
+      .chip-one { left: -10px; } .chip-two { right: -10px; }
+      .scroll-note { display: none; }
+    }
+    @media (max-width: 575.98px) {
+      .section-space { padding: 78px 0; }
+      .hero h1 { font-size: clamp(3.15rem, 16vw, 5rem); }
+      .hero-meta { gap: 13px; }
+      .code-body { padding: 18px 14px; font-size: .69rem; }
+      .code-no { width: 22px; }
+      .float-chip { font-size: .65rem; padding: 9px 11px; }
+      .chip-one { top: -18px; } .chip-two { bottom: -22px; }
+      .stat { padding: 20px 7px; } .stat span { font-size: .68rem; }
+      .about-panel { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#home"><span class="brand-mark">CR</span> chaman<span class="accent">.dev</span></a>
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Expertise</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0"><a class="btn-accent py-2 px-3" href="#contact">Let's talk <i class="bi bi-arrow-up-right"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <div class="availability mono"><span class="pulse"></span> SENIOR PHP & LARAVEL DEVELOPER</div>
+            <h1>Building digital<br><span class="outline">things that</span><br><span class="accent">work better.</span></h1>
+            <p class="hero-copy">I'm Chaman Rastogi — a backend-focused developer with <strong class="text-white">11+ years of experience</strong> turning complex business requirements into reliable web applications, powerful APIs, and data-rich dashboards.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#work" class="btn-accent">Explore my work <i class="bi bi-arrow-down-right"></i></a>
+              <a href="#contact" class="btn-outline-custom">Get in touch <i class="bi bi-send"></i></a>
+            </div>
+            <div class="hero-meta">
+              <span><i class="bi bi-geo-alt"></i> Noida, India</span>
+              <span><i class="bi bi-code-slash"></i> Backend · APIs · Data</span>
+              <span><i class="bi bi-lightning-charge"></i> Performance-minded</span>
+            </div>
+          </div>
+          <div class="col-lg-5 hero-code-wrap">
+            <div class="position-relative">
+              <div class="float-chip chip-one"><i class="bi bi-check-circle-fill"></i> Clean architecture</div>
+              <div class="code-card">
+                <div class="code-top"><div class="window-dots"><span></span><span></span><span></span></div><span class="mono">Developer.php</span><span><i class="bi bi-three-dots"></i></span></div>
+                <div class="code-body" aria-label="Decorative PHP code sample">
+                  <span class="code-line"><span class="code-no">01</span><span class="code-pink">&lt;?php</span></span>
+                  <span class="code-line"><span class="code-no">02</span><span class="code-pink">class</span> <span class="code-blue">Developer</span></span>
+                  <span class="code-line"><span class="code-no">03</span>{</span>
+                  <span class="code-line code-indent"><span class="code-no">04</span><span class="code-pink">public string</span> <span class="code-yellow">$focus</span> =</span>
+                  <span class="code-line code-indent"><span class="code-no">05</span><span class="code-green">'building solutions'</span>;</span>
+                  <span class="code-line code-indent"><span class="code-no">06</span></span>
+                  <span class="code-line code-indent"><span class="code-no">07</span><span class="code-pink">public function</span> <span class="code-blue">build</span>(): <span class="code-yellow">Result</span></span>
+                  <span class="code-line code-indent"><span class="code-no">08</span>{</span>
+                  <span class="code-line code-indent"><span class="code-no">09</span>&nbsp;&nbsp;<span class="code-pink">return</span> <span class="code-blue">Solution</span>::<span class="code-yellow">reliable</span>();</span>
+                  <span class="code-line code-indent"><span class="code-no">10</span>}</span>
+                  <span class="code-line"><span class="code-no">11</span>}</span>
+                  <span class="code-line"><span class="code-no">12</span><span class="code-pink">?&gt;</span></span>
+                </div>
+              </div>
+              <div class="float-chip chip-two"><i class="bi bi-speedometer2"></i> Performance first</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-note mono">Scroll to explore &nbsp; ↓</div>
+    </section>
+
+    <div class="stats-strip">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-6 col-md-3 stat"><strong>11<span class="accent">+</span></strong><span>Years of experience</span></div>
+          <div class="col-6 col-md-3 stat"><strong>API<span class="accent">+</span></strong><span>Backend engineering</span></div>
+          <div class="col-6 col-md-3 stat"><strong>SQL</strong><span>Data & query optimization</span></div>
+          <div class="col-6 col-md-3 stat"><strong>DX<span class="accent">+</span></strong><span>Maintainable code</span></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-space" id="about">
+      <div class="container">
+        <div class="row g-5 align-items-stretch">
+          <div class="col-lg-5 reveal">
+            <span class="section-kicker">A little about me</span>
+            <h2 class="section-title mt-3">Good software is built on <span class="accent">good thinking.</span></h2>
+            <p class="text-muted-custom mt-4">I enjoy solving the problems behind the interface: designing dependable backend systems, improving database performance, integrating APIs, and automating repetitive workflows.</p>
+            <p class="text-muted-custom">My approach is practical: understand the business need, keep the architecture maintainable, and make performance and reliability part of the build from day one.</p>
+            <a class="btn-outline-custom mt-2" href="#experience">My experience <i class="bi bi-arrow-right"></i></a>
+          </div>
+          <div class="col-lg-7 reveal">
+            <div class="about-panel">
+              <div class="about-symbol"><i class="bi bi-braces-asterisk"></i></div>
+              <h3 class="h4 fw-bold mt-4">What I bring to a team</h3>
+              <div class="principle"><i class="bi bi-check2-circle"></i><div><strong>Backend systems that scale</strong><small>Structured Laravel/PHP applications, REST APIs, queues, cron jobs, and integrations.</small></div></div>
+              <div class="principle"><i class="bi bi-check2-circle"></i><div><strong>Databases that perform</strong><small>SQL query tuning, data modeling, indexing, and practical MySQL/MongoDB solutions.</small></div></div>
+              <div class="principle"><i class="bi bi-check2-circle"></i><div><strong>Useful, data-rich interfaces</strong><small>Dashboards and responsive UI built with JavaScript, Bootstrap, and modern frontend tools.</small></div></div>
+              <div class="principle"><i class="bi bi-check2-circle"></i><div><strong>Ownership from idea to delivery</strong><small>Debugging, production problem-solving, code quality, and collaboration across the stack.</small></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0" id="skills">
+      <div class="container">
+        <div class="row align-items-end mb-5">
+          <div class="col-lg-7 reveal"><span class="section-kicker">Technical expertise</span><h2 class="section-title mt-3 mb-0">The tools behind<br>the <span class="accent">solutions.</span></h2></div>
+          <div class="col-lg-5 mt-3 mt-lg-0 reveal"><p class="text-muted-custom mb-0">A practical full-stack toolkit, with a strong focus on backend engineering, database performance, and production-ready applications.</p></div>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6 col-xl-3 reveal"><div class="skill-card"><i class="bi bi-server skill-icon"></i><h3>Backend development</h3><p>Business logic, architecture, integrations, and robust server-side systems.</p><div class="tags"><span class="tag">PHP 7/8</span><span class="tag">Laravel</span><span class="tag">CakePHP</span><span class="tag">CodeIgniter</span><span class="tag">WordPress</span></div></div></div>
+          <div class="col-md-6 col-xl-3 reveal"><div class="skill-card"><i class="bi bi-database skill-icon"></i><h3>Data & performance</h3><p>Efficient queries, data processing, caching, and reliable storage patterns.</p><div class="tags"><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">SQL tuning</span><span class="tag">Caching</span></div></div></div>
+          <div class="col-md-6 col-xl-3 reveal"><div class="skill-card"><i class="bi bi-diagram-3 skill-icon"></i><h3>APIs & automation</h3><p>Connected services, scheduled tasks, background work, and API integrations.</p><div class="tags"><span class="tag">REST APIs</span><span class="tag">Queues</span><span class="tag">Cron jobs</span><span class="tag">Postman</span><span class="tag">Composer</span></div></div></div>
+          <div class="col-md-6 col-xl-3 reveal"><div class="skill-card"><i class="bi bi-window-stack skill-icon"></i><h3>Frontend & delivery</h3><p>Responsive interfaces and the everyday tools that ship dependable software.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">Bootstrap</span><span class="tag">React</span><span class="tag">Git</span><span class="tag">Linux</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space" id="work" style="background:rgba(255,255,255,.014);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+      <div class="container">
+        <div class="row align-items-end mb-5">
+          <div class="col-lg-8 reveal"><span class="section-kicker">Selected work</span><h2 class="section-title mt-3 mb-0">Problems solved.<br><span class="accent">Systems delivered.</span></h2></div>
+          <div class="col-lg-4 mt-3 mt-lg-0 reveal"><p class="text-muted-custom mb-0">A selection of project types drawn from my professional experience. Details are kept high-level where work is proprietary.</p></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-4 reveal">
+            <article class="project-card">
+              <div class="project-visual"><div class="mock-window"><div class="mock-head"><span>MAP OVERVIEW</span><span>● LIVE DATA</span></div><div class="mock-kpis"><div class="mock-kpi"><b>2.4k</b><small>SELLERS</small></div><div class="mock-kpi"><b>86.2%</b><small>COMPLIANCE</small></div><div class="mock-kpi"><b>+12%</b><small>GROWTH</small></div></div><div class="mock-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+              <div class="project-content"><div class="project-topline"><span class="project-type">Analytics · Dashboard</span><i class="bi bi-arrow-up-right"></i></div><h3>Enterprise MAP Dashboard</h3><p>Data-rich dashboards, historical trend visualizations, seller compliance metrics, date filters, and export workflows for business intelligence.</p><div class="tags mb-3"><span class="tag">Laravel / PHP</span><span class="tag">MySQL</span><span class="tag">Chart.js</span><span class="tag">APIs</span></div><span class="project-link">Dashboard engineering <i class="bi bi-arrow-right"></i></span></div>
+            </article>
+          </div>
+          <div class="col-lg-4 reveal">
+            <article class="project-card">
+              <div class="project-visual visual-api"><div class="api-sheet"><div class="d-flex align-items-center justify-content-between mb-3"><span class="text-white fw-bold small">API RESPONSE</span><span class="api-pill">200 OK</span></div><div class="api-row mid"></div><div class="api-row"></div><div class="api-row short"></div><div class="api-row mid"></div><div class="api-row short"></div></div></div>
+              <div class="project-content"><div class="project-topline"><span class="project-type">Backend · Integration</span><i class="bi bi-arrow-up-right"></i></div><h3>Price & Seller Tracker</h3><p>Backend workflows for product and seller data, historical records, automated processing, and reliable API-driven reporting.</p><div class="tags mb-3"><span class="tag">PHP</span><span class="tag">REST APIs</span><span class="tag">MySQL</span><span class="tag">Cron jobs</span></div><span class="project-link">Automation & data flows <i class="bi bi-arrow-right"></i></span></div>
+            </article>
+          </div>
+          <div class="col-lg-4 reveal">
+            <article class="project-card">
+              <div class="project-visual visual-data"><div class="data-orbit"><i class="bi bi-bar-chart-line"></i></div></div>
+              <div class="project-content"><div class="project-topline"><span class="project-type">Web applications</span><i class="bi bi-arrow-up-right"></i></div><h3>Business Platforms & CRMs</h3><p>Experience across real-estate portals, learning management systems, healthcare CRM workflows, and business-facing web applications.</p><div class="tags mb-3"><span class="tag">Laravel</span><span class="tag">CakePHP</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span></div><span class="project-link">Full-stack delivery <i class="bi bi-arrow-right"></i></span></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space" id="experience">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5 reveal"><span class="section-kicker">Career journey</span><h2 class="section-title mt-3">Experience built<br>through <span class="accent">delivery.</span></h2><p class="text-muted-custom mt-4">More than a decade of building, improving, and supporting web applications across business domains.</p><div class="about-panel mt-4"><span class="mono accent small">CURRENT FOCUS</span><h3 class="h5 fw-bold mt-3">Reliable backend systems</h3><p class="text-muted-custom small mb-0">API design, database optimization, dashboards, automation, and production performance.</p></div></div>
+          <div class="col-lg-7 reveal">
+            <div class="timeline">
+              <div class="timeline-item"><div class="timeline-card"><div class="timeline-head"><div><h3>Senior PHP Developer · Masthead Technologies</h3><p>Enterprise dashboards, analytics & APIs</p></div><span class="date-chip">AUG 2024 — PRESENT</span></div><ul><li>Develop backend features, REST APIs, automation scripts, and scheduled jobs.</li><li>Improve dashboard responsiveness and data access through query and API optimization.</li><li>Build analytics views and data workflows for seller, pricing, and compliance insights.</li></ul></div></div>
+              <div class="timeline-item"><div class="timeline-card"><div class="timeline-head"><div><h3>PHP / Web Application Development</h3><p>HSI · Connecting Dots · The Catalyst Group</p></div><span class="date-chip">PREVIOUS ROLES</span></div><ul><li>Delivered and maintained web applications using PHP frameworks and relational databases.</li><li>Worked on business requirements, integrations, debugging, and application enhancements.</li></ul></div></div>
+              <div class="timeline-item"><div class="timeline-card"><div class="timeline-head"><div><h3>PHP Developer</h3><p>Magidyte · Adit24x7 · 3D Web</p></div><span class="date-chip">EARLIER CAREER</span></div><ul><li>Built web features and customer-facing applications across multiple business domains.</li><li>Developed a strong foundation in full-stack delivery, troubleshooting, and client requirements.</li></ul></div></div>
+            </div>
+            <p class="text-muted-custom small mt-3">Dates for earlier roles are intentionally generalized; add exact dates from your latest resume before publishing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="row align-items-center g-5 position-relative" style="z-index:1">
+            <div class="col-lg-7">
+              <span class="section-kicker">Have a project in mind?</span>
+              <h2 class="section-title mt-3">Let's build something <span class="accent">meaningful.</span></h2>
+              <p class="text-muted-custom mt-3 mb-4">Have a backend challenge, a dashboard to improve, or a product idea to bring to life? Let's talk about what you need.</p>
+              <a href="mailto:chamanrastogi@gmail.com?subject=Let's%20discuss%20a%20project" class="btn-accent">Start a conversation <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+            <div class="col-lg-5">
+              <div class="mono text-muted-custom small mb-2">GET IN TOUCH</div>
+              <a class="contact-email" href="mailto:chamanrastogi@gmail.com">chamanrastogi@gmail.com</a>
+              <div class="contact-line"><i class="bi bi-geo-alt"></i><span>Noida, Uttar Pradesh, India</span></div>
+              <div class="contact-line"><i class="bi bi-briefcase"></i><span>Senior PHP & Laravel Developer</span></div>
+              <div class="d-flex gap-2 mt-4">
+                <a class="social-link" href="https://www.linkedin.com/in/chaman-rastogi/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <a class="social-link" href="https://github.com/chamanrastogi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                <a class="social-link" href="mailto:chamanrastogi@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>© <span id="year"></span> Chaman Rastogi. Built with purpose.</span>
+      <span class="mono">PHP · LARAVEL · APIs · PERFORMANCE</span>
+      <a href="#home" class="text-muted-custom">Back to top ↑</a>
+    </div>
+  </footer>
+  <a href="#home" class="back-top" id="backTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Current year, sticky navigation and back-to-top control.
+    const nav = document.getElementById('mainNav');
+    const backTop = document.getElementById('backTop');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function updateScrollUI() {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+      backTop.classList.toggle('show', window.scrollY > 500);
+    }
+    window.addEventListener('scroll', updateScrollUI, { passive: true });
+    updateScrollUI();
+
+    // Close the mobile menu after selecting a section.
+    document.querySelectorAll('#navMenu .nav-link, #navMenu .btn-accent').forEach(link => {
+      link.addEventListener('click', () => {
+        const menu = document.getElementById('navMenu');
+        if (menu.classList.contains('show')) bootstrap.Collapse.getOrCreateInstance(menu).hide();
+      });
+    });
+
+    // Reveal sections as they enter the viewport; respect reduced-motion settings.
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
