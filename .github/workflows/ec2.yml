@@ -25,8 +25,8 @@ jobs:
           APP="/home/ec2-user/portfolio"
           if [ -d "$APP/.git" ]; then
             cd "$APP"
-            git pull --ff-only origin main
+            git pull --ff-only origin master
           else
-            git clone -b main "https://github.com/${{ github.repository }}.git" "$APP"
+            git clone -b master "https://github.com/${{ github.repository }}.git" "$APP"
           fi
           EOF
