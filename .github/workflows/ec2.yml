@@ -1,5 +1,9 @@
 name: Deploy webapp Website to EC2
-on: push
+on: 
+    push:
+
+    workflow_dispatch:
+      
 
 jobs:
   deploy:
